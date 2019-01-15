@@ -7,10 +7,11 @@ namespace src.Models
 {
     public partial class MyContext : DbContext
     {
-        public MyContext()
-        {
-        }
 
+        public string connectionString = "Data Source=db.sqlite";
+
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
         public MyContext(DbContextOptions<MyContext> options)
             : base(options)
         {
@@ -18,18 +19,12 @@ namespace src.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlite("Data Source=db.sqlite");
-            }
+            optionsBuilder.UseSqlite(connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
         }
-
-        public DbSet<src.Models.Pessoa> Pessoa { get; set; }
     }
 }

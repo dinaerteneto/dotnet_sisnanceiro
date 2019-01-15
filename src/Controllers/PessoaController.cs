@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using src.Models;
+using src.Models.ViewModels;
 
 namespace src.Controllers
 {
@@ -45,7 +46,8 @@ namespace src.Controllers
         // GET: Pessoa/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new PessoaViewModel();
+            return View(model);
         }
 
         // POST: Pessoa/Create
@@ -53,15 +55,18 @@ namespace src.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LastName,BirthDate,Gender")] Pessoa pessoa)
+        public async Task<IActionResult> Create([FromForm] PessoaViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pessoa);
+
+                return Json(model);
+
+                _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pessoa);
+            return View(model);
         }
 
         // GET: Pessoa/Edit/5

@@ -16,8 +16,9 @@ namespace src.Models
         [MaxLength(100)]
         public string LastName { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true), MaxLength(12)]
-        public DateTime BirthDate { get; set; }
+        // [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true), MaxLength(12)]
+        [MaxLength(12)]
+        public string BirthDate { get; set; }
 
         [MaxLength(1)]
         public string Gender { get; set; }

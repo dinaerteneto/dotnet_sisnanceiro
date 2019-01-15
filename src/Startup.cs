@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using src.Models;
 
 namespace src
 {
@@ -17,7 +18,7 @@ namespace src
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;         
         }
 
         public IConfiguration Configuration { get; }
@@ -34,6 +35,7 @@ namespace src
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddEntityFrameworkSqlite().AddDbContext<MyContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
