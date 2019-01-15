@@ -25,6 +25,7 @@ namespace src.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
+            base.OnModelCreating(modelBuilder);   
         }
     }
 }

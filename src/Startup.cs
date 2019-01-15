@@ -11,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using src.Models;
+using AutoMapper;
+using src.Models.ViewModels;
+using src.Mappers;
 
 namespace src
 {
@@ -18,7 +21,7 @@ namespace src
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;         
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -33,9 +36,15 @@ namespace src
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddEntityFrameworkSqlite().AddDbContext<MyContext>();
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperProfileConfiguration());
+            });
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

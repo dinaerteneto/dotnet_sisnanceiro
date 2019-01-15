@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace src.Controllers
     public class PessoaController : Controller
     {
         private readonly MyContext _context;
+        private readonly IMapper _mapper;
 
-        public PessoaController(MyContext context)
+        public PessoaController(MyContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: Pessoa
@@ -55,18 +58,20 @@ namespace src.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([FromForm] PessoaViewModel model)
+        public async Task<IActionResult> Create(PessoaViewModel pessoaViewModel)
         {
             if (ModelState.IsValid)
             {
-
-                return Json(model);
+                var model = _mapper.Map<Pessoa>(pessoaViewModel.Pessoa);
+                model.Enderecos = new List<Endereco>();
+                var endereco = _mapper.Map<Endereco>(pessoaViewModel.Endereco);
+                model.Enderecos.Add(endereco);
 
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            return View(pessoaViewModel);
         }
 
         // GET: Pessoa/Edit/5
