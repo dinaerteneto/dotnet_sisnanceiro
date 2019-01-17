@@ -6,17 +6,18 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using src.Context;
 using src.Models;
-using src.Models.ViewModels;
+using src.ViewModels;
 
 namespace src.Controllers
 {
     public class PessoaController : Controller
     {
-        private readonly MyContext _context;
+        private readonly PessoaContext _context;
         private readonly IMapper _mapper;
 
-        public PessoaController(MyContext context, IMapper mapper)
+        public PessoaController(PessoaContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -95,7 +96,7 @@ namespace src.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LastName,BirthDate,Gender")] Pessoa pessoa)
+        public async Task<IActionResult> Edit(int id, [FromForm] Pessoa pessoa)
         {
             if (id != pessoa.Id)
             {

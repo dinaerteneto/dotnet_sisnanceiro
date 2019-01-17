@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using src.Context;
 using src.Models;
 
 namespace src.Controllers
 {
     public class EnderecoController : Controller
     {
-        private readonly MyContext _context;
+        private readonly PessoaContext _context;
 
-        public EnderecoController(MyContext context)
+        public EnderecoController(PessoaContext context)
         {
             _context = context;
         }
@@ -21,7 +22,7 @@ namespace src.Controllers
         // GET: Endereco
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Enderecos.ToListAsync());
+            return View(await _context.Endereco.ToListAsync());
         }
 
         // GET: Endereco/Details/5
@@ -32,7 +33,7 @@ namespace src.Controllers
                 return NotFound();
             }
 
-            var endereco = await _context.Enderecos
+            var endereco = await _context.Endereco
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (endereco == null)
             {
@@ -72,7 +73,7 @@ namespace src.Controllers
                 return NotFound();
             }
 
-            var endereco = await _context.Enderecos.FindAsync(id);
+            var endereco = await _context.Endereco.FindAsync(id);
             if (endereco == null)
             {
                 return NotFound();
@@ -123,7 +124,7 @@ namespace src.Controllers
                 return NotFound();
             }
 
-            var endereco = await _context.Enderecos
+            var endereco = await _context.Endereco
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (endereco == null)
             {
@@ -138,15 +139,15 @@ namespace src.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var endereco = await _context.Enderecos.FindAsync(id);
-            _context.Enderecos.Remove(endereco);
+            var endereco = await _context.Endereco.FindAsync(id);
+            _context.Endereco.Remove(endereco);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EnderecoExists(int id)
         {
-            return _context.Enderecos.Any(e => e.Id == id);
+            return _context.Endereco.Any(e => e.Id == id);
         }
     }
 }

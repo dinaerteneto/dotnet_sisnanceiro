@@ -11,20 +11,27 @@ namespace src.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        
+        [MaxLength(14), Required]
+        public string CpfCnpj { get; set; }
+
+        [Required]
+        public bool isTenant { get; set; }
 
         [MaxLength(100), Required]
-        public string Name { get; set; }
+        public string Nome { get; set; }
 
         [MaxLength(100)]
-        public string LastName { get; set; }
+        public string Sobrenome { get; set; }
 
-        // [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true), MaxLength(12)]
-        [MaxLength(12)]
-        public string BirthDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true), MaxLength(12)]
+        public string DataNascimento { get; set; }
 
         [MaxLength(1)]
-        public string Gender { get; set; }
+        public string Sexo { get; set; }
 
+        public virtual List<Pessoa> Pessoas { get; set; }
+        public virtual List<Contato> Contatos { get; set; }
         public virtual List<Endereco> Enderecos { get; set; }
     }
 }

@@ -12,8 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using src.Models;
 using AutoMapper;
-using src.Models.ViewModels;
+using src.ViewModels;
 using src.Mappers;
+using src.Context;
 
 namespace src
 {
@@ -37,7 +38,7 @@ namespace src
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddEntityFrameworkSqlite().AddDbContext<MyContext>();
+            services.AddEntityFrameworkSqlite().AddDbContext<PessoaContext>();
 
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
