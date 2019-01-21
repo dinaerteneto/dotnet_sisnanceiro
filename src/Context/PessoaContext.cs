@@ -11,6 +11,7 @@ namespace src.Context
         public DbSet <Pessoa> Pessoa {get; set;}
         public DbSet <Endereco> Endereco { get; set; }
         public DbSet <Contato> Contato { get; set; }
+        public DbSet <ContatoTipo> ContatoTipo { get; set; }
 
         public PessoaContext()
         {

@@ -14,5 +14,7 @@ namespace src.Models
 
         [MaxLength(100), Required]
         public string Nome { get; set; }
+
+        // public List<Contato> Contatos { get; set; }
     }
 }

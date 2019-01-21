@@ -17,6 +17,9 @@ namespace src.Models
         
         [MaxLength(255)]
         public string Observacao { get; set; }
-        public virtual List<ContatoTipo> Tipos { get; set; }
+
+        [Required]
+        [ForeignKey("ContatoTipoId")]        
+        public ContatoTipo ContatoTipo { get; set; }
     }
 }

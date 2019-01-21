@@ -64,9 +64,6 @@ namespace src.Controllers
             if (ModelState.IsValid)
             {
                 var model = _mapper.Map<Pessoa>(pessoaViewModel.Pessoa);
-                model.Enderecos = new List<Endereco>();
-                var endereco = _mapper.Map<Endereco>(pessoaViewModel.Endereco);
-                model.Enderecos.Add(endereco);
 
                 _context.Add(model);
                 await _context.SaveChangesAsync();
