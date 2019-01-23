@@ -3,8 +3,8 @@ using src.Models;
 
 namespace src.ViewModels
 {
-    public class PessoaViewModel
+    public class EnderecoViewModel
     {
-        public Pessoa Pessoa { get; set; }
+        public Endereco Endereco { get; set; }
     }
 }

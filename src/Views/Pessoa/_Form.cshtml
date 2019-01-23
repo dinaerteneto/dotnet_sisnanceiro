@@ -1,0 +1,57 @@
+@model src.ViewModels.PessoaViewModel
+
+<p class="card-description">Dados cadastrais</p>
+
+<form asp-action="Create" class="">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="Pessoa.Nome" class="control-label"></label>
+                <input asp-for="Pessoa.Nome" class="form-control" />
+                <span asp-validation-for="Pessoa.Nome" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="Pessoa.Sobrenome" class="control-label"></label>
+                <input asp-for="Pessoa.Sobrenome" class="form-control" />
+                <span asp-validation-for="Pessoa.Sobrenome" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label asp-for="Pessoa.DataNascimento" class="control-label"></label>
+                <input asp-for="Pessoa.DataNascimento" class="form-control" />
+                <span asp-validation-for="Pessoa.DataNascimento" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label asp-for="Pessoa.Sexo" class="control-label"></label>
+                <input asp-for="Pessoa.Sexo" class="form-control" />
+                <span asp-validation-for="Pessoa.Sexo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="Pessoa.CpfCnpj" class="control-label"></label>
+                <input asp-for="Pessoa.CpfCnpj" class="form-control" />
+                <span asp-validation-for="Pessoa.CpfCnpj" class="text-danger"></span>
+            </div>
+        </div>                
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <button type="submit" class="btn btn-gradient-primary float-right">Incluir</button>
+            </div>
+        </div>
+    </div>
+
+</form>
