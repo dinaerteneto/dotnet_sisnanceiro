@@ -5,6 +5,15 @@ namespace src.ViewModels
 {
     public class PessoaViewModel
     {
-        public Pessoa Pessoa { get; set; }
+        public int Id { get; set; }
+        public string CpfCnpj { get; set; }
+        public bool isTenant { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public string DataNascimento { get; set; }
+        public string Sexo { get; set; }
+        public virtual List<Pessoa> Pessoas { get; set; }
+        public virtual List<Contato> Contatos { get; set; }
+        public virtual List<Endereco> Enderecos { get; set; }        
     }
 }

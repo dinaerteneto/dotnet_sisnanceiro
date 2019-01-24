@@ -12,7 +12,7 @@ namespace src.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
-        [MaxLength(14), Required]
+        [MaxLength(14)]
         public string CpfCnpj { get; set; }
 
         [Required]

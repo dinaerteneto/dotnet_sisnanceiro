@@ -13,7 +13,7 @@ namespace src.Mappers
         protected AutoMapperProfileConfiguration(string profileName)
         : base(profileName)
         {
-            CreateMap<PessoaViewModel, Pessoa>();
+            CreateMap<Pessoa, PessoaViewModel>();
         }
     }
 }

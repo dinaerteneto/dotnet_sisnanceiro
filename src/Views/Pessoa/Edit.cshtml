@@ -7,6 +7,14 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Alterar cliente</h4>
-        <partial name="_Form" />
+
+        <form asp-action="Edit" class="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <partial name="_Form" />
+
+        </form>
+
+
     </div>
 </div>

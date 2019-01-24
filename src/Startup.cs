@@ -39,6 +39,7 @@ namespace src
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddEntityFrameworkSqlite().AddDbContext<PessoaContext>();
+            // services.AddAutoMapper();
 
             var config = new AutoMapper.MapperConfiguration(cfg =>
             {
