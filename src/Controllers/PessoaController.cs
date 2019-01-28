@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using src.Context;
 using src.Models;
@@ -63,8 +60,7 @@ namespace src.Controllers
         {
             if (ModelState.IsValid)
             {
-                var model = _mapper.Map<Pessoa>(pessoaViewModel.Pessoa);
-
+                Pessoa model = _mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,12 +76,14 @@ namespace src.Controllers
                 return NotFound();
             }
 
-            var pessoa = await _context.Pessoa.FindAsync(id);
+            Pessoa pessoa = await _context.Pessoa.FindAsync(id);
             if (pessoa == null)
             {
                 return NotFound();
             }
-            return View(pessoa);
+
+            PessoaViewModel model = _mapper.Map<Pessoa, PessoaViewModel>(pessoa);
+            return View(model);
         }
 
         // POST: Pessoa/Edit/5
