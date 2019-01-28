@@ -1,12 +1,78 @@
 @model src.ViewModels.PessoaViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = (string)ViewData["Layout"] ?? "_LayoutBlank";
+    ViewContext.ClientValidationEnabled = true;
 }
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Incluir cliente</h4>
-        <partial name="_Form" />
+
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Incluir cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-</div>
+        
+    <div class="card modal-body">
+        <form asp-action="Create" class="">
+
+            <div class="card-body">
+                <p class="card-description">Dados cadastrais</p>
+
+                
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="Nome" class="control-label"></label>
+                                <input asp-for="Nome" class="form-control" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="Sobrenome" class="control-label"></label>
+                                <input asp-for="Sobrenome" class="form-control" />
+                                <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label asp-for="DataNascimento" class="control-label"></label>
+                                <input asp-for="DataNascimento" class="form-control" />
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label asp-for="Sexo" class="control-label"></label>
+                                <input asp-for="Sexo" class="form-control" />
+                                <span asp-validation-for="Sexo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="CpfCnpj" class="control-label"></label>
+                                <input asp-for="CpfCnpj" class="form-control" />
+                                <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+                            </div>
+                        </div>                
+                    </div>
+                    
+
+                
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-gradient-primary float-right">Salvar</button>
+            </div>
+
+        </form>
+
+    </div>

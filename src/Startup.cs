@@ -38,6 +38,7 @@ namespace src
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddViewOptions(options => options.HtmlHelperOptions.ClientValidationEnabled = true);
             services.AddEntityFrameworkSqlite().AddDbContext<PessoaContext>();
             // services.AddAutoMapper();
 

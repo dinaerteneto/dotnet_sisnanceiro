@@ -12,7 +12,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="/images/favicon.png" />
 </head>
 <body>
     <!-- Modal -->
@@ -153,18 +153,7 @@
             </ul>
         </nav>
         <div class="main-panel">
-            <div class="content-wrapper">
-            <div class="page-header">
-            <h3 class="page-title">
-              Icons
-            </h3>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Icons</li>
-              </ol>
-            </nav>
-          </div>                
+            <div class="content-wrapper">               
                 <partial name="_CookieConsentPartial" />
                 @RenderBody()
             </div>
@@ -193,9 +182,12 @@
   <!-- inject:js -->
   <script src="/js/off-canvas.js"></script>
   <script src="/js/misc.js"></script>
+  <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
-
+  <script src="/js/custom/main.js"></script>
+  @RenderSection("Scripts", required: false)
 </body>
 </html>

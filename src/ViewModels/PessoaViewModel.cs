@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using src.Models;
 
 namespace src.ViewModels
@@ -8,6 +9,8 @@ namespace src.ViewModels
         public int Id { get; set; }
         public string CpfCnpj { get; set; }
         public bool isTenant { get; set; }
+
+        [MaxLength(100), Required]
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string DataNascimento { get; set; }
