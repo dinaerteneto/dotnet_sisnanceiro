@@ -23,14 +23,6 @@ namespace src.Context
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlite("Data Source=db.sqlite");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
              modelBuilder.HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
@@ -45,9 +37,9 @@ namespace src.Context
             );
 
             modelBuilder.Entity<Pessoa>().HasData(
-                new { Id = 1, CpfCnpj = "34713094000168", isTenant = true, Nome = "Márcio", Sobrenome = "Paro", DataNascimento = "2019-01-21"},
-                new { Id = 2, CpfCnpj = "78832039000162", isTenant = true, Nome = "Márcio", Sobrenome = "Paro", DataNascimento = "2019-01-21"},
-                new { Id = 3, CpfCnpj = "87169379023", isTenant = false, Nome = "Dinaerte", Sobrenome = "Neto", DataNascimento = "1985-07-15", PessoaId = 2}
+                new { Id = 1, CpfCnpj = "34713094000168", isTenant = true, Nome = "Márcio", Sobrenome = "Paro", DataNascimento = new DateTime(2019,01,21)},
+                new { Id = 2, CpfCnpj = "78832039000162", isTenant = true, Nome = "Márcio", Sobrenome = "Paro", DataNascimento = new DateTime(2019,01,21)},
+                new { Id = 3, CpfCnpj = "87169379023", isTenant = false, Nome = "Dinaerte", Sobrenome = "Neto", DataNascimento = new DateTime(1985,07,15), PessoaId = 2}
             );
 
             modelBuilder.Entity<Contato>().HasData(

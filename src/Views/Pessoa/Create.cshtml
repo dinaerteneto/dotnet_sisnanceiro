@@ -43,29 +43,30 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label asp-for="DataNascimento" class="control-label"></label>
-                                <input asp-for="DataNascimento" class="form-control" />
+                                <input asp-for="DataNascimento" class="form-control mask-date-picker" />
                                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label asp-for="Sexo" class="control-label"></label>
-                                <input asp-for="Sexo" class="form-control" />
+                                <select asp-for="Sexo" class="form-control">
+                                    <option value="">-- Selecione o Sexo --</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
                                 <span asp-validation-for="Sexo" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label asp-for="CpfCnpj" class="control-label"></label>
-                                <input asp-for="CpfCnpj" class="form-control" />
+                                <input asp-for="CpfCnpj" class="form-control mask-cpf" />
                                 <span asp-validation-for="CpfCnpj" class="text-danger"></span>
                             </div>
                         </div>                
                     </div>
                     
-
-                
-
             </div>
 
             <div class="modal-footer">

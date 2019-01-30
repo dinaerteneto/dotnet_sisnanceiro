@@ -15,6 +15,8 @@ using AutoMapper;
 using src.ViewModels;
 using src.Mappers;
 using src.Context;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace src
 {
@@ -39,7 +41,9 @@ namespace src
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc().AddViewOptions(options => options.HtmlHelperOptions.ClientValidationEnabled = true);
-            services.AddEntityFrameworkSqlite().AddDbContext<PessoaContext>();
+            services.AddEntityFrameworkMySql().AddDbContext<PessoaContext>(options => 
+                options.UseMySql("server=127.0.0.1;port=3306;database=marcio_paro;uid=root")
+            );
             // services.AddAutoMapper();
 
             var config = new AutoMapper.MapperConfiguration(cfg =>
@@ -63,6 +67,15 @@ namespace src
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //Fixar Cultura para pt-BR
+            RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions
+            {
+                SupportedCultures = new List<CultureInfo> { new CultureInfo("pt-BR") },
+                SupportedUICultures = new List<CultureInfo> { new CultureInfo("pt-BR") },
+                DefaultRequestCulture = new RequestCulture("pt-BR")
+            };
+            app.UseRequestLocalization(localizationOptions);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

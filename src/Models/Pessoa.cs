@@ -25,7 +25,7 @@ namespace src.Models
         public string Sobrenome { get; set; }
 
         [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}", ApplyFormatInEditMode = true), MaxLength(12)]
-        public string DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
 
         [MaxLength(1)]
         public string Sexo { get; set; }
