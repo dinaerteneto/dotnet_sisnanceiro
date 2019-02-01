@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -61,6 +63,9 @@ namespace src.Controllers
             if (ModelState.IsValid)
             {
                 Pessoa model = _mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
+                DateTime date = DateTime.ParseExact(pessoaViewModel.DataNascimento, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                model.DataNascimento = date;
+
                 _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

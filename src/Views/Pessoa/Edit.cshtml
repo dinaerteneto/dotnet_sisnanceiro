@@ -1,21 +1,144 @@
 @model src.ViewModels.PessoaViewModel
 
 @{
-    ViewData["Title"] = "Update";
     ViewContext.ClientValidationEnabled = true;
 }
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">Alterar cliente</h4>
+<div class="page-header">
+    <h3 class="page-title">
+        Alterando @Html.DisplayFor(model => model.Nome)
+    </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Alterar</li>
+        </ol>
+    </nav>
+</div> 
 
-        <form asp-action="Edit" class="">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row">
+    <div class="col-sm-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Dados cadastrais</div>
+                <form asp-action="Edit">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
 
-            <partial name="_Form" />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Nome" class="control-label"></label>
+                                    <input asp-for="Nome" class="form-control" />
+                                    <span asp-validation-for="Nome" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Sobrenome" class="control-label"></label>
+                                    <input asp-for="Sobrenome" class="form-control" />
+                                    <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
 
-        </form>
-
-
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label asp-for="DataNascimento" class="control-label"></label>
+                                    <input asp-for="DataNascimento" class="form-control mask-date-picker" />
+                                    <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label asp-for="Sexo" class="control-label"></label>
+                                    <select asp-for="Sexo" class="form-control">
+                                        <option value="">-- Selecione o Sexo --</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Feminino</option>
+                                    </select>
+                                    <span asp-validation-for="Sexo" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="CpfCnpj" class="control-label"></label>
+                                    <input asp-for="CpfCnpj" class="form-control mask-cpf" />
+                                    <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+                                </div>
+                            </div>                
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Contato(s) 
+                    <small class="float-right"><a href="/pessoa-contato/create" class="open-remote-modal"><i class="mdi mdi-note-outline"></i></a> Incluir</small>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>celular</td>                           
+                                    <td>11 965568653</td>
+                                </tr>
+                                <tr>
+                                    <td>e-mail</td>                           
+                                    <td>dinaerteneto@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="col-sm-12 grid-margin stretch-card">
+        <div class="card-body">
+            <div class="card-title">
+                Endereço(s)
+                <small class="float-right"><a href="/pessoa-contato/create" class="open-remote-modal"><i class="mdi mdi-note-outline"></i></a> Incluir</small>
+            </div>
+            <div class="row">
+                
+                <div class="col-sm-4">
+                    <h6>Casa</h6>
+                    <p>
+                        Rua Fernão Dias, 34 Ap 02 <br>
+                        Campestre - Santo André - SP <br>
+                        09080-605
+                    </p>
+                </div>
+                <div class="col-sm-4">
+                    <h6>Mãe</h6>
+                    <p>
+                        Av Riacho dos Machados, 145 <br>
+                        Jardim Tietê - São Paulo - SP <br>
+                        03943-010
+                    </p>
+                </div>                 
+            </div>
+        </div>
+    </div>
+</div>
+

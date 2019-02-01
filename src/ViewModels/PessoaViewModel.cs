@@ -13,6 +13,8 @@ namespace src.ViewModels
         [MaxLength(100), Required]
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public string DataNascimento { get; set; }
         public string Sexo { get; set; }
         public virtual List<Pessoa> Pessoas { get; set; }
